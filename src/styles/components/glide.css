@@ -1,0 +1,18 @@
+.glide__arrows {
+  position: absolute;
+  top: 20%;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.glide__arrow {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}

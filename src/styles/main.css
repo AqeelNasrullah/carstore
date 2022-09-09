@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+@import url("https://cdn.linearicons.com/free/1.0.0/icon-font.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");
+
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../../node_modules/@glidejs/glide/dist/css/glide.core.min.css";
+@import "../../node_modules/react-toastify/dist/ReactToastify.min.css";
+@import "../../node_modules/react-quill/dist/quill.snow.css";
+
+@import "./components/carSection.css";
+@import "./components/glide.css";
+@import "./components/contact.css";
+@import "./components/page.css";
+@import "./components/viewCar.css";
+@import "./components/dropzone.css";
+@import "./components/quill.css";
+
+@import "./UI/modal.css";
+@import "./UI/card.css";
+
+.text-brand {
+  font-family: "Monoton", cursive;
+}
+
+a {
+  text-decoration: none !important;
+}
