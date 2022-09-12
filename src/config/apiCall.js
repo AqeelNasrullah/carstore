@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiCall = axios.create({
-  baseURL: "/api",
+  baseURL: "https://carstorepk.herokuapp.com/api",
   headers: {
     "Content-Type": "application/json",
   },
