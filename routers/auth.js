@@ -4,6 +4,7 @@ const { User } = require("../models");
 const bcrypt = require("bcrypt");
 const authValidator = require("../validators/auth");
 const authenticate = require("../middlewares/authenticate");
+const jwt = require("jsonwebtoken");
 
 router.all((req, res) => {
   res.setHeader("Content-Type", "application/json");
@@ -39,8 +40,10 @@ router.post("/login", authValidator.login, async (req, res) => {
       if (resp) {
         const verified = await bcrypt.compare(req.body.password, resp.password);
         if (verified) {
-          req.session.userId = resp.id;
-          res.status(200).json({ message: "LoggedIn successfully." });
+          const token = jwt.sign({ id: resp.id }, process.env.JWT_SECRET, {
+            algorithm: "HS512",
+          });
+          res.status(200).json({ token, name: resp.name });
         } else {
           res.status(401).json({ message: "Password is incorrect." });
         }

@@ -4,7 +4,6 @@ const http = require("http");
 const logger = require("morgan");
 const cors = require("cors");
 const { sequelize } = require("./models");
-const session = require("express-session");
 const path = require("path");
 
 const PORT = process.env.PORT || 8000;
@@ -17,15 +16,6 @@ app.use(cors({ origin: "*", credentials: true }));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-app.use(
-  session({
-    name: "authSession",
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-  })
-);
 
 app.get("/", (req, res) => {
   res.status(200).json({
