@@ -103,7 +103,8 @@ router.put("/update/:id", authenticate.verify, async (req, res) => {
 
 router.delete("/delete/:id", authenticate.verify, async (req, res) => {
   const id = req.params.id;
-  await Car.destroy({ where: { id } })
+
+  await Car.destroy({ where: { id: id } })
     .then((resp) => {
       res.status(200).json({ message: "Car deleted successfully." });
     })
@@ -112,7 +113,7 @@ router.delete("/delete/:id", authenticate.verify, async (req, res) => {
 
 router.get("/active/:id", authenticate.verify, async (req, res) => {
   const id = req.params.id;
-  await Car.update({ isDeleted: false }, { where: { id } })
+  await Car.update({ isDeleted: false }, { where: { id: id } })
     .then((resp) => {
       res.status(200).json(resp);
     })
