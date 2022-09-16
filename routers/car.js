@@ -9,7 +9,7 @@ router.all((req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  await Car.findAll()
+  await Car.findAll({ where: { isDeleted: false } })
     .then((resp) => {
       res.status(200).json(resp);
     })
@@ -103,10 +103,9 @@ router.put("/update/:id", authenticate.verify, async (req, res) => {
 
 router.delete("/delete/:id", authenticate.verify, async (req, res) => {
   const id = req.params.id;
-
-  await Car.destroy({ where: { id: id } })
+  await Car.update({ isDeleted: true }, { where: { id: id } })
     .then((resp) => {
-      res.status(200).json({ message: "Car deleted successfully." });
+      res.status(200).json(resp);
     })
     .catch((err) => new Error(err));
 });
