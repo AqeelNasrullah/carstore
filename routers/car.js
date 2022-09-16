@@ -103,9 +103,9 @@ router.put("/update/:id", authenticate.verify, async (req, res) => {
 
 router.delete("/delete/:id", authenticate.verify, async (req, res) => {
   const id = req.params.id;
-  await Car.update({ isDeleted: true }, { where: { id } })
+  await Car.destroy({ where: { id } })
     .then((resp) => {
-      res.status(200).json(resp);
+      res.status(200).json({ message: "Car deleted successfully." });
     })
     .catch((err) => new Error(err));
 });
